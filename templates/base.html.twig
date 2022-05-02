@@ -29,7 +29,7 @@
 				<img src="{{ asset('images/Logo_Presidence.png') }}" alt="logo presidence">
 			</div>
 		</div>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: relative;">
+		<nav class="navbar main-nav navbar-expand-lg navbar-light bg-light" style="position: relative;">
 			<div class="container">
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 					<i class="fa-solid fa-bars"></i>
@@ -86,13 +86,33 @@
 											<li class="nav-item">
 												<a class="nav-link" target="_blank" href="https://www.youtube.com/channel/UC1ZCoVkoGYZ4NC1p3cSBZQg/videos">Videos</a>
 											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#">Presse</a>
+											</li>
 										</ul>
 									</div>
 								</div>
 							</nav>
 						</li>
-						<li class="nav-item {% if app.request.get('_route') == 'rapports' %} active{% endif %}">
-							<a class="nav-link" href="{{ url('rapports') }}">Rapports</a>
+						<li class="nav-item has-children">
+							<a class="nav-link" href="#" role="button">
+								Fichiers
+								<i class="fa-solid fa-chevron-down" style="margin-left: .5rem;"></i>
+							</a>
+							<nav class="navbar navbar-expand-lg navbar-light bg-light" style="position: absolute;">
+								<div class="container">
+									<div class="collapse navbar-collapse" id="navbarScroll">
+										<ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+											<li class="nav-item {% if app.request.get('_route') == 'photos' %} active{% endif %}">
+												<a class="nav-link" aria-current="page" href="{{ url('rapports') }}">Rapports</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#">Revues</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</nav>
 						</li>
 						<li class="nav-item {% if app.request.get('_route') == 'denoncer' %} active{% endif %}">
 							<a class="nav-link" href="{{ url('denoncer') }}">Dénoncer</a>
@@ -234,6 +254,34 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
 		<script>
 			baguetteBox.run('.tz-gallery');
+			document.addEventListener("DOMContentLoaded", function(event) { 
+				var derniere_position_de_scroll_connue = 0;
+				var ticking = false;
+				let nav = document.querySelector('nav.navbar.main-nav')
+
+				if (window.scrollY > 100) {
+					nav.classList.add('fixed');
+				} else {
+					nav.classList.remove('fixed');
+				}
+
+				window.addEventListener('scroll', function(e) {
+					derniere_position_de_scroll_connue = window.scrollY;
+
+					if (!ticking) {
+						window.requestAnimationFrame(function() {
+							if (derniere_position_de_scroll_connue > 100) {
+								nav.classList.add('fixed');
+							} else {
+								nav.classList.remove('fixed');
+							}
+							ticking = false;
+						});
+					}
+
+					ticking = true;
+				});
+			});
 		</script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0" nonce="ICWil1lx"></script>

@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inspection Générale de Finance
+{% block title %}Inspection Générale des Finances
 {% endblock %}
 
 {% block body %}
 	<div id="fb-root"></div>	
 
 	<div class="main">
-		<div class="jumbotron">
-			<div class="container">
+		</div>
+		<div class="jumbotron" style="position:relative">
+			<div class="bgslider" style="position:absolute; z-index:-50; width:100%;height:100%; top:0;background-size:cover">
+			</div>
+			<div class="container" style="z-index:100">
 				<div class="row">
 					<div class="col-md-6 texts">
-						<h3>INSPECTION GENERALE DE FINANCE</h3>
+						<h3 style="z-index:100">INSPECTION GENERALE DES FINANCES</h3>
 						<p>L’Inspection générale des finances dispose d’une compétence générale en matière de contrôle des finances et des biens publics.</p>
 					</div>
 					<div class="col-md-6">
@@ -99,7 +102,7 @@
 			</div>
 		</div>
 
-		<div class="container">
+		<div class="container" style="margin-bottom:40px">
 			<div class="twitter row">
 				<div class="col-md-6">
 					<h3 class="section-title">De notre page twitter</h3>
@@ -122,20 +125,23 @@
 		var images = [];
 		var slideTime = 3000; // 3 seconds
 
-		images[0] = 'https://via.placeholder.com/150/300AAA';
-		images[1] = 'https://via.placeholder.com/150/000300';
-		images[2] = 'https://via.placeholder.com/150/AAA300';
+		images[0] = 'https://via.placeholder.com/150/AAA300';
+		images[1] = "{{ asset('images/flag.png') }}";
+		images[2] = "{{ asset('images/photo2.jpg') }}";
+		images[3] = "{{ asset('images/insp.jpeg') }}";
 
 		function changePicture() {
-			let jumbotron = document.querySelector('.jumbotron');
-			jumbotron.style.backgroundImage = "url(" + images[i] + ")";
+			let jumbotron = document.querySelector('.bgslider');
+			jumbotron.style.backgroundImage = "linear-gradient(to bottom, rgba(0,0,0,.3), rgba(0,0,0,.4)), url(" + images[i] + ")";
 
 			if (i < images.length - 1) {
 				i++;
 			} else {
 				i = 0;
 			}
-			setTimeout(changePicture, slideTime);
+			setTimeout(() => {
+				changePicture()
+			}, slideTime);
 		}
 
 		window.onload = changePicture;
