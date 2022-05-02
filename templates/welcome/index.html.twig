@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+	<div id="fb-root"></div>	
 
 	<div class="main">
 		<div class="jumbotron">
@@ -11,10 +12,10 @@
 				<div class="row">
 					<div class="col-md-6 texts">
 						<h3>INSPECTION GENERALE DE FINANCE</h3>
-						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et saepe nihil possimus est veniam quo, soluta deserunt hic a impedit assumenda? Cupiditate esse ipsa repudiandae architecto dolore, similique in tempore!</p>
+						<p>L’Inspection générale des finances dispose d’une compétence générale en matière de contrôle des finances et des biens publics.</p>
 					</div>
 					<div class="col-md-6">
-						<h1>
+						<h1 class="main-title">
 							<span>LUTTONS CONTRE</span><br>
 							<span>LES ANTIVALEURS</span>
 						</h1>
@@ -29,7 +30,7 @@
 					{% for post in posts %}
 						<div class="postcontainer">
 							<a href="{{ path('actu_detail', {title: post.title, id: post.id}) }}" class="post">
-								<div class="post-img" style="background-image: url('{{ post.getImgPath() }}');"></div>
+								<div class="post-img" style="background-image: url('images/{{ post.getImgPath() }}');"></div>
 								<div class="post-text">
 									<h3 class="title">{{ post.title }}</h3>
 									<p>{{ post.description }}</p>
@@ -46,7 +47,7 @@
 			{% endif %}
 
 		</div>
-		<div class="section gray">
+		<div class="section gray logos">
 			<div class="container">
 				<section class="customer-logos slider">
 					<div class="slide"><img src="images/p1.jpeg"></div>
@@ -60,17 +61,15 @@
 		</div>
 		<div class="video-container">
 			<div class="container">
-
 				<h2 class="section-title" style="margin: 0 0 40px 0 !important;">Nos Vidéos</h2>
 				<div class="row">
-					<div class="col-md-4" style="display: flex; justify-content: center; text-align: right; flex-direction: column;">
-						<h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h3>
-						<p style="opacity: .7;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione molestias error culpa, neque aut sed expedita odio libero fugit odit eaque voluptate quaerat ad hic, itaque fugiat provident natus corrupti.</p>
-						<a href="#" class="more-link">Voir toutes nos vidéos
+					<div class="col-md-4 video-texts" style="display: flex; justify-content: center; text-align: right; flex-direction: column;">
+						<h3>Vulgarisation contre les antivaleurs.</h3>
+						<a href="https://www.youtube.com/channel/UC1ZCoVkoGYZ4NC1p3cSBZQg/videos" target="_blank" class="more-link">Voir toutes nos vidéos
 							<i class="fa-solid fa-arrow-right"></i>
 						</a>
 					</div>
-					<div class="col-md-8" style="display: flex; justify-content: center;">
+					<div class="col-md-8 video-box" style="display: flex; justify-content: center;">
 						<div class="video" style="text-align: center; font-size: 4rem; display: flex; align-items: center; justify-content: center;">
 							<a href="#" class="video-link">
 								<i class="fa-solid fa-play"></i>
@@ -80,25 +79,65 @@
 				</div>
 			</div>
 		</div>
-		<div class="video-container">
+		<div style="padding: 80px 0; background-color:#fbfbfb !important" class="photo-container">
 			<div class="container">
 
 				<h2 class="section-title" style="margin: 0 0 40px 0 !important;">Nos Photos</h2>
 				<div class="row">
-					<div class="col-md-8" style="display: flex; justify-content: center;">
+					<div class="video-box photo col-md-8" style="display: flex; justify-content: center;">
 						<div class="photo" style="text-align: center; font-size: 4rem; display: flex; align-items: center; justify-content: center;">
 							<a href="#" class="video-link"></a>
 						</div>
 					</div>
-					<div class="col-md-4" style="display: flex; justify-content: center; text-align: left; flex-direction: column;">
-						<h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</h3>
-						<p style="opacity: .7;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione molestias error culpa, neque aut sed expedita odio libero fugit odit eaque voluptate quaerat ad hic, itaque fugiat provident natus corrupti.</p>
-						<a href="#" class="more-link" style="color: #000;">Voir toutes nos photos
+					<div class="col-md-4 photo-texts" style="display: flex; justify-content: center; text-align: left; flex-direction: column; margin-left: 40px">
+						<h3>Notre gallerie</h3>
+						<a href="{{ url('photos') }}" class="more-link" style="color: #000;">Voir toutes nos photos
 							<i class="fa-solid fa-arrow-right"></i>
 						</a>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="container">
+			<div class="twitter row">
+				<div class="col-md-6">
+					<h3 class="section-title">De notre page twitter</h3>
+					<div> 
+					<a class="twitter-timeline" data-width="500" data-height="800" data-theme="light" href="https://twitter.com/IgfRdc?ref_src=twsrc%5Etfw">Tweets by IGF_finances</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h3 class="section-title">De notre page facebook</h3>
+					<div> 
+						<div class="fb-page" data-href="https://web.facebook.com/igfRdc/?_rdc=1&amp;_rdr" data-tabs="timeline" data-width="500" data-height="800" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/igfRdc/?_rdc=1&amp;_rdr" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/igfRdc/?_rdc=1&amp;_rdr">Inspection Générale des Finances rdc _officielle_</a></blockquote></div>
+					</div>			
+				</div>
+			</div>
+		</div>
 	</div>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0" nonce="FwwQs1J7"></script>
+	<script>
+		var i = 0;
+		var images = [];
+		var slideTime = 3000; // 3 seconds
+
+		images[0] = 'https://via.placeholder.com/150/300AAA';
+		images[1] = 'https://via.placeholder.com/150/000300';
+		images[2] = 'https://via.placeholder.com/150/AAA300';
+
+		function changePicture() {
+			let jumbotron = document.querySelector('.jumbotron');
+			jumbotron.style.backgroundImage = "url(" + images[i] + ")";
+
+			if (i < images.length - 1) {
+				i++;
+			} else {
+				i = 0;
+			}
+			setTimeout(changePicture, slideTime);
+		}
+
+		window.onload = changePicture;
+	</script>
 {% endblock %}
